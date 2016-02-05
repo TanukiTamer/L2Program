@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Windows.Forms;
+
 namespace TextEditor
 {
     class TextFile
@@ -42,10 +44,26 @@ namespace TextEditor
             this.Filename = filename;
             readFileContents();
         }
-
+        public TextFile()
+        {
+            this.Filename = "";
+            this.Content = "";
+        }
         private void readFileContents()
-        { 
-            Content = File.ReadAllText(Filename);
+        {
+            try
+            {
+                Content = File.ReadAllText(Filename);
+            }
+            catch (Exception e)
+            {
+                
+                MessageBox.Show(e.Message, "Problem opening file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public void Save()
+        {
+            File.WriteAllText(Filename, Content);
         }
     }
 }
