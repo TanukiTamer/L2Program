@@ -66,6 +66,7 @@ namespace TextEditor
             saveFileDlg.ShowDialog();
             currentFile.Filename = saveFileDlg.FileName;
             currentFile.Save();
+            isChanged = false;
         }
     }
 }
