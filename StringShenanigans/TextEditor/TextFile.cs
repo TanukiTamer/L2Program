@@ -10,6 +10,7 @@ namespace TextEditor
 {
     class TextFile
     {
+        //just a comment to test git
         private String filename;
         private String content;
 
